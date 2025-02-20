@@ -4,7 +4,7 @@ FROM python:3.8
 RUN pip install --upgrade pip
 
 # Instala las dependencias necesarias
-RUN pip install uvicorn fastapi
+RUN pip install uvicorn fastapi mysql-connector-python sqlalchemy
 
 # Copia el código de la aplicación al contenedor
 COPY ./app /app
@@ -16,4 +16,4 @@ WORKDIR /app
 EXPOSE 8000
 
 # Comando para ejecutar la aplicación
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "python db.py && python add_items.py && uvicorn app:app --host 0.0.0.0 --port 8000"]
