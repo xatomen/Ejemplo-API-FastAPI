@@ -7,7 +7,7 @@ RUN pip install --upgrade pip
 RUN pip install uvicorn fastapi mysql-connector-python sqlalchemy
 
 # Copia el código de la aplicación al contenedor
-COPY ./app /app
+COPY . /app
 
 # Establece el directorio de trabajo
 WORKDIR /app

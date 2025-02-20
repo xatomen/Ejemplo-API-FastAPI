@@ -29,5 +29,12 @@ services:
     depends_on:
       - db
 
+  app-front:
+    image: example-front
+    ports:
+      - "8001:3000"
+    depends_on:
+      - app
+
 volumes:
   db_data:
